@@ -1,0 +1,18 @@
+# version: '3'
+# services:
+#   web:
+#     build:
+#       context: .
+#       dockerfile: dockerfile
+#     ports:
+#       - "3000:3000"  # Map host port 3000 to container port 3000
+#     volumes:
+#       - .:/ap  
+#     environment:
+#       - NODE_ENV=development  # Set the Node.js environment to development
+  
+
+# # networks:
+# #   mail:
+# #     external: true
+# #     driver: bridge

@@ -1,0 +1,49 @@
+.main-nav{
+    
+    min-height: 50px;
+    width:100%;
+    margin:0% auto;
+    box-shadow:0px 1px 5px #00000033;
+    position:fixed;
+    z-index: 5;
+    top:0%;
+    left:0%;
+    background-color: white;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.Navbar{
+    height:100%;
+    min-width: 85%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.Navbar-right button{
+    background-color: #000bff;
+    display: block;
+    width: 100px;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.SearchBar{
+    margin-right: 500px;
+    padding-right: 150px;
+    padding-top:5px;
+    left: 61%;
+    width: 100px;
+    height: 20px;
+    padding-bottom:5px ;
+    border:1px solid black ;
+    border-radius: 5px;
+    display: flex;
+}
+

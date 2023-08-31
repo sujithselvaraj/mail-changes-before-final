@@ -1,0 +1,278 @@
+  /* .Inbox {
+
+    display: flex;
+
+    padding: 5px;
+    padding-left: 200px;
+    padding-top: 50px;
+  }
+  .selected-mail {
+    font-weight: bold; 
+}
+  .del{
+    opacity: 0.5;
+}
+  
+  .Inbox ul {
+    list-style:none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .Inbox li {
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .Inbox li:hover {
+    background-color: #f7f7f7;
+    transform: translateY(-2px);
+    font-weight: bold;
+  }
+  
+
+  .Inbox li div {
+    display: flex;
+    justify-content: space-between;
+  }
+  .Inbox li div p.subject {
+    margin: 0;
+    font-size: 16px;
+    white-space: nowrap;       
+    overflow: hidden;         
+    text-overflow: ellipsis;  
+    max-width: 180px;
+  }
+  
+  
+  .Inbox li p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+ 
+  .Inbox .del:hover {
+    opacity: 1;
+  }
+  
+  
+  .Viewing-Mail {
+    flex: 1;
+
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+  }
+  
+ 
+
+
+.Mail-List {
+
+margin-top: 20px;
+    width: 50%; 
+    border-right: 1px solid #ddd;
+    padding: 0px;
+    overflow-y: auto; 
+  }
+
+  .del {
+    border: none;
+    background-color: none;
+  }
+
+  .Inbox button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    
+  }
+
+  .mail-content-html {
+    margin-top: 10px;
+    white-space: pre-line;
+  }
+  
+
+  .Viewing-Mail {
+    display: flex;
+    flex-direction: column;
+
+
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+  }
+  
+  
+   */
+
+
+   .Inbox {
+
+    display: flex;
+    padding: 5px;
+    padding-left: 200px;
+    padding-top: 50px;
+  }
+  .selected-mail {
+   background-color: rgb(51, 51, 203);
+}
+  .del{
+    opacity: 0.5;
+}
+  
+  .Inbox ul {
+    list-style:none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .Inbox li {
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .Inbox li:hover {
+    background-color: #f7f7f7;
+    transform: translateY(-2px);
+    /* font-weight: bold; */
+  }
+  
+  .mail-f{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  /* .mail p{
+    padding-top:;
+  } */
+
+  .avatar{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+  }
+  .delete p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .subject{
+    padding-top: 8px;
+  }
+
+    /* justify-content: space-between; */
+  /*}
+  /* .Inbox li div p.subject {
+    margin: 0;
+    font-size: 16px;
+    white-space: nowrap;       
+    overflow: hidden;         
+    text-overflow: ellipsis;  
+    max-width: 180px;
+  }
+   */
+  
+  .Inbox li p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .sender{
+    font-weight: bolder;
+  }
+ 
+  .Inbox .del:hover {
+    opacity: 1;
+  }
+  
+  
+  .Viewing-Mail {
+    flex: 1;
+    /* padding: 20px; */
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+  }
+  
+ 
+
+
+.Mail-List {
+
+margin-top: 20px;
+    width: 50%; 
+    border-right: 1px solid #ddd;
+    padding: 0px;
+    overflow-y: auto; 
+  }
+
+  /* .del {
+    border: none;
+    background-color: none;
+  } */
+
+  .Inbox button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    
+  }
+
+
+  .view{
+    font-weight:bold;
+  }
+/* 
+  .mail-content-html {
+    margin-top: 10px;
+    white-space: pre-line;
+  }
+   */
+
+  /* .Viewing-Mail {
+    display: flex;
+    flex-direction: column;
+
+
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+  } */ 
+  
+  
+  .out{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    align-items: center;
+    gap: 10px;
+
+  }
+
+  .mail-view-time{
+   margin-left: 100px;
+
+  }
+
+  .selected-mail {
+    background: #ACCEF1 !important;
+  }

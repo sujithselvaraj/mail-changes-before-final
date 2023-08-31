@@ -1,0 +1,72 @@
+.ComposeMail{
+    margin-top: 30px;
+    min-height: 100vh;
+    max-width: 1000px;
+    width: 2400px;
+    position: fixed;
+}
+
+
+.ComposeMail-Container{
+
+   margin-left: 150px;
+    width: 750px;
+    max-width: 1200px;
+}
+
+.ComposeMail-Container h1{
+    padding: 80px 0px 20px 0px;
+    margin-left: 100px;
+}
+
+.ComposeMail-Container form .form-item{
+    padding: 20px;
+    margin-right: 10px;
+    margin-left: 100px;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 10px 25px rgb(0 0 0 /5% ),
+    0 20px 48px rgb(0 0 0 / 5%),
+    0 1px 4px rgb(0 0 0 / 10%);
+}
+.review-btn{
+    /* padding-left: 300px ; */
+    margin-left: 100px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #009dff;
+    border: solid 1px #009dff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.review-btn:hover{
+    background-color: #0086d8;
+}
+
+.item{
+    padding: 5px;
+}
+
+
+.form-item label {
+    display:grid;
+    margin-bottom: 5px;
+  }
+  
+  .form-item input[type="text"],
+  .form-item input[type="password"],
+  .form-item textarea {
+    width: 90%;
+    padding: 10px;
+
+    border: 1px solid black;
+  }
+  
+  .form-item textarea {
+    resize: vertical;
+    height: 180px;
+  }
+  
