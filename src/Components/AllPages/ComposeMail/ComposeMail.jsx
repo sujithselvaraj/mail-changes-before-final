@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './ComposeMail.css'
 import LeftSideBar from '../../LeftSideBar/LeftSideBar';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../../Navbar/Navbar';
 import Background from '../../../Assests/Background.svg';
 
 function ComposeMail() {

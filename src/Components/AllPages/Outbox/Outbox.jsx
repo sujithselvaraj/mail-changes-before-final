@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import LeftSideBar from "../../LeftSideBar/LeftSideBar";
 import "./Outbox.css";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Navbar/Navbar";
 import { format } from "date-fns";
 import forward from "../../../Assests/Forward.svg";
 function Outbox() {

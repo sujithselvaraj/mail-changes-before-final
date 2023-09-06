@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Trash.css";
 import LeftSideBar from "../../LeftSideBar/LeftSideBar";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Navbar/Navbar";
 import { format } from "date-fns";
 import { GenerateAvatar } from "../../Reducers/GenerateAvatar";
 import ConfirmationDialog from "../../Reducers/ConfirmationDialog";

@@ -4,7 +4,7 @@ import './Inbox.css';
 import { format } from 'date-fns';
 import { GenerateAvatar } from '../../Reducers/GenerateAvatar';
 import LeftSideBar from '../../LeftSideBar/LeftSideBar';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../../Navbar/Navbar';
 import Trash from '../../../Assests/Bin.svg';
 import forward from '../../../Assests/Forward.svg';
 import reply from '../../../Assests/Reply.svg';
