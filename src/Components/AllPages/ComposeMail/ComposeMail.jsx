@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './ComposeMail.css'
-import LeftSideBar from '../../LeftSideRouteBar/LeftSideBar';
+import LeftSideBar from '../../LeftSideBar/LeftSideBar';
 import Navbar from '../Navbar/Navbar';
-import Background from '../../../assests/Background.svg'
+import Background from '../../../Assests/Background.svg';
+
 function ComposeMail() {
   const [recipients, setRecipients] = useState('');
   const [subject, setSubject] = useState('');
@@ -67,6 +68,7 @@ function ComposeMail() {
     <div className="ComposeMail-Container">
     <h1 style={{fontFamily:"Poppins,sans-serif"}}>Compose Mail</h1>
     <img src={Background} alt="" width="500" style={{display: "flex",position:"absolute", left: "500px",top:"45px", margin: "0%"}} />
+    
       <form onSubmit={handleComposeMail} className='form'>
         <div className="form-item">
         <div className='item'>
@@ -83,12 +85,15 @@ function ComposeMail() {
         </div>
         </div>
         <button type="submit" className='review-btn'>Send</button><br/>
-        {successMessage && <p style={{ color: 'green' ,padding:"60px"}}>{successMessage}</p>}
-      {errorMessage && <p style={{ color: 'red' ,padding:"60px"}}>{errorMessage}</p>}
+        {successMessage && <div style={{ color: 'green' ,padding:"60px"}}>{successMessage}</div>}
+      {errorMessage && <div style={{ color: 'red' ,padding:"60px"}}>{errorMessage}</div>}
       
       </form>
+     
       </div>
+      
     </div>
+  
   );
 }
 

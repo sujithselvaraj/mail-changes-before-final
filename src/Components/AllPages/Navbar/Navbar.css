@@ -1,4 +1,4 @@
-.main-nav{
+ .main-nav{
     
     min-height: 50px;
     width:100%;
@@ -15,15 +15,26 @@
 }
 .Navbar{
     height:100%;
-    min-width: 85%;
+    min-width: 75%;
     display:flex;
     align-items: center;
     justify-content: space-between;
 }
+.logo {
+    margin-left: 20px; 
+    cursor: pointer;
+  }
 
+.Navbar-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding-right: 40px;
+}
 
-.Navbar-right button{
-    background-color: #000bff;
+.LogoutButton{
+    background-color: #000bff !important;
     display: block;
     width: 100px;
     padding: 10px;
@@ -38,12 +49,14 @@
     margin-right: 500px;
     padding-right: 150px;
     padding-top:5px;
-    left: 61%;
-    width: 100px;
-    height: 20px;
+    left: 100%;
+    width: 200px;
+    height: 22px;
     padding-bottom:5px ;
     border:1px solid black ;
     border-radius: 5px;
     display: flex;
 }
+ 
+
 

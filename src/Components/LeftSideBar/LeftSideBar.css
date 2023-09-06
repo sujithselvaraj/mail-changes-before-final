@@ -1,0 +1,37 @@
+.left-sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  font-size: 13px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.side-nav {
+  margin: 50px 8px;
+  height: auto;
+  padding: 20px 8px;
+}
+
+.side-nav-links {
+  text-decoration: none;
+  color: #3a3a3a;
+  display: flex;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.side-nav-links:hover {
+  color: black;
+  background-color: #e5e5e5;
+}
+
+.active {
+  font-weight: bolder;
+  color: black;
+  background-color: #e5e5e5;
+  border-radius: 5px;
+}

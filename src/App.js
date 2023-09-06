@@ -20,10 +20,10 @@ export default App;
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import './App.css';
 // import Navbar from './Components/AllPages/Navbar/Navbar';
-// import LeftSideBar from './Components/LeftSideRouteBar/LeftSideBar';
+// import LeftSideBar from './Components/LeftSideBar/LeftSideBar';
 // import { useShouldRenderNavAndSidebar } from './useShouldRenderNavAndSidebar';
-// import SignUpPage from './Components/AllPages/signup/SignUpPage';
-// import LoginPage from './Components/AllPages/login/LoginPage';
+// import SignUp from './Components/AllPages/SignUp/SignUp';
+// import Login from './Components/AllPages/Login/Login';
 // import AllRoutes from './AllRoutes'; // Make sure AllRoutes is correctly imported
 
 // function App() {
@@ -39,8 +39,8 @@ export default App;
 //           </>
 //         )}
 //         <Routes>
-//           <Route path="/login" element={<LoginPage />} />
-//           <Route path="/signup" element={<SignUpPage />} />
+//           <Route path="/Login" element={<Login />} />
+//           <Route path="/SignUp" element={<SignUp />} />
 //           <Route path="/*" element={<AllRoutes />} />
 //         </Routes>
 //       </div>

@@ -1,117 +1,3 @@
-  /* .Inbox {
-
-    display: flex;
-
-    padding: 5px;
-    padding-left: 200px;
-    padding-top: 50px;
-  }
-  .selected-mail {
-    font-weight: bold; 
-}
-  .del{
-    opacity: 0.5;
-}
-  
-  .Inbox ul {
-    list-style:none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .Inbox li {
-    border: 1px solid #ddd;
-    border-top: none;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .Inbox li:hover {
-    background-color: #f7f7f7;
-    transform: translateY(-2px);
-    font-weight: bold;
-  }
-  
-
-  .Inbox li div {
-    display: flex;
-    justify-content: space-between;
-  }
-  .Inbox li div p.subject {
-    margin: 0;
-    font-size: 16px;
-    white-space: nowrap;       
-    overflow: hidden;         
-    text-overflow: ellipsis;  
-    max-width: 180px;
-  }
-  
-  
-  .Inbox li p {
-    margin: 0;
-    font-size: 16px;
-  }
-  
- 
-  .Inbox .del:hover {
-    opacity: 1;
-  }
-  
-  
-  .Viewing-Mail {
-    flex: 1;
-
-    background-color: #f9f9f9;
-    border-left: 1px solid #ddd;
-  }
-  
- 
-
-
-.Mail-List {
-
-margin-top: 20px;
-    width: 50%; 
-    border-right: 1px solid #ddd;
-    padding: 0px;
-    overflow-y: auto; 
-  }
-
-  .del {
-    border: none;
-    background-color: none;
-  }
-
-  .Inbox button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: opacity 0.3s;
-    
-  }
-
-  .mail-content-html {
-    margin-top: 10px;
-    white-space: pre-line;
-  }
-  
-
-  .Viewing-Mail {
-    display: flex;
-    flex-direction: column;
-
-
-    background-color: #f9f9f9;
-    border-left: 1px solid #ddd;
-  }
-  
-  
-   */
-
-
    .Inbox {
 
     display: flex;
@@ -161,6 +47,8 @@ margin-top: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap; 
+    flex: 2;
   }
   .delete{
     display: flex;
@@ -180,18 +68,6 @@ margin-top: 20px;
     padding-top: 8px;
   }
 
-    /* justify-content: space-between; */
-  /*}
-  /* .Inbox li div p.subject {
-    margin: 0;
-    font-size: 16px;
-    white-space: nowrap;       
-    overflow: hidden;         
-    text-overflow: ellipsis;  
-    max-width: 180px;
-  }
-   */
-  
   .Inbox li p {
     margin: 0;
     font-size: 16px;
@@ -208,7 +84,6 @@ margin-top: 20px;
   
   .Viewing-Mail {
     flex: 1;
-    /* padding: 20px; */
     background-color: #f9f9f9;
     border-left: 1px solid #ddd;
   }
@@ -225,12 +100,7 @@ margin-top: 20px;
     overflow-y: auto; 
   }
 
-  /* .del {
-    border: none;
-    background-color: none;
-  } */
-
-  .Inbox button {
+  .del {
     background: none;
     border: none;
     cursor: pointer;
@@ -242,22 +112,6 @@ margin-top: 20px;
   .view{
     font-weight:bold;
   }
-/* 
-  .mail-content-html {
-    margin-top: 10px;
-    white-space: pre-line;
-  }
-   */
-
-  /* .Viewing-Mail {
-    display: flex;
-    flex-direction: column;
-
-
-    background-color: #f9f9f9;
-    border-left: 1px solid #ddd;
-  } */ 
-  
   
   .out{
     display: flex;
@@ -269,10 +123,133 @@ margin-top: 20px;
   }
 
   .mail-view-time{
-   margin-left: 100px;
+   margin-left: 70px;
 
   }
 
   .selected-mail {
     background: #ACCEF1 !important;
   }
+
+.compose-input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+
+.compose-textarea {
+  width: 90%;
+  padding: 10px;
+  resize: vertical;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+
+.compose-button {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.compose-button:hover {
+  background-color: #0056b3;
+}
+
+
+.compose-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.replyforward{
+  color: blue;
+  font-size:medium;
+  display: flex;
+  cursor: pointer;
+  flex-direction: row;
+  gap: 3px;
+  background-color: white;
+  border: none;
+}
+
+.inin
+{
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  padding-top: 5px;
+}
+
+
+
+/* Inbox.css */
+.confirmation-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.dialog-content {
+  background-color: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 24px;
+  width: 300px;
+  text-align: center;
+}
+
+.confirmation-dialog p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirm-button,
+.cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.confirm-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.confirm-button:hover {
+  background-color: #0056b3;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+

@@ -1,11 +1,11 @@
-.login-div{
+.Login-div{
  display: flex;
  flex-direction: column;
  justify-content: center;
  align-items: center;
  padding-top: 150px;
 }
-.login
+.Login
 {
     max-width: 3000px;
     width: 350px;
@@ -18,15 +18,17 @@
  h2 {
     text-align:start;
     margin-bottom: 20px;
+    margin-right: 30px;
+    margin-left: 0px;
   }
   
-  .login label {
+  .Login label {
     display: block;
     margin-bottom: 8px;
   }
   
-  .login input[type="text"],
-  .login input[type="password"] {
+  .Login input[type="text"],
+  .Login input[type="password"] {
     width: 70%;
     font-size: medium;
     font-weight:lighter;
@@ -36,11 +38,10 @@
     border-radius: 5px;
   }
   
-  .login button {
+  .Login button {
     display: block;
     width: 150px;
     padding: 10px;
-    /* margin-left: 100px; */
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -49,16 +50,12 @@
     transition: background-color 0.3s;
   }
   
-  .login button:hover {
+  .Login button:hover {
     background-color: #0056b3;
   }
   
-  /* .login p {
-    color: red;
-    margin-top: 10px;
-  } */
+
   
-  /* Center the login form on the page */
   body {
     display: flex;
     align-items: center;
@@ -72,4 +69,5 @@
   {
     color: blue;
   }
-
+ 
+ 
