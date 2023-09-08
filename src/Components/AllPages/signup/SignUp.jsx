@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import "./SignUp.css";
 import { NavLink } from "react-router-dom";
+import { UseCommonState } from "../../Reducers/UseCommonState";
 
 function SignUp() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [successMessage, setSuccessMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
+
+const{firstName,setFirstName,lastName,setLastName,email,setEmail,password,setPassword,successMessage,setSuccessMessage,errorMessage,setErrorMessage}=UseCommonState();
 
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);

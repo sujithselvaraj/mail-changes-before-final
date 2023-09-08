@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, {  useEffect } from "react";
 import "./Trash.css";
 import LeftSideBar from "../../LeftSideBar/LeftSideBar";
 import Navbar from "../../Navbar/Navbar";
@@ -7,20 +6,14 @@ import { format } from "date-fns";
 import { GenerateAvatar } from "../../Reducers/GenerateAvatar";
 import ConfirmationDialog from "../../Reducers/ConfirmationDialog";
 import Bin from "../../../Assests/Bin.svg";
+import { UseCommonState } from "../../Reducers/UseCommonState";
+import axiosInstance from "../../Reducers/AxiosConfig";
 
 function Trash() {
-  const [deletedMails, setDeletedMails] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedMail, setSelectedMail] = useState(null);
-  const [selectedMailId, setSelectedMailId] = useState(null);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [confirmationMessage, setConfirmationMessage] = useState("");
-  const [confirmedAction, setConfirmedAction] = useState(null);
 
-  const [showAllRecipients, setShowAllRecipients] = useState(false);
+  const{deletedMails,setDeletedMails,loading,setLoading,error,setError,selectedMail,setSelectedMail,selectedMailId,setSelectedMailId,showConfirmation,setShowConfirmation,
+        confirmationMessage,setConfirmationMessage,confirmedAction,setConfirmedAction,showAllRecipients,setShowAllRecipients,currentPage,setCurrentPage,initialSelectionDone, setInitialSelectionDone}=UseCommonState();
 
-  const [currentPage, setCurrentPage] = useState(1);
   const sentMailsPerPage = 10;
   const indexOfLastDeletedMail = currentPage * sentMailsPerPage;
   const indexOfFirstDeletedMail = indexOfLastDeletedMail - sentMailsPerPage;
@@ -32,8 +25,6 @@ function Trash() {
   const toggleRecipientExpansion = () => {
     setShowAllRecipients(!showAllRecipients);
   };
-
-  const [initialSelectionDone, setInitialSelectionDone] = useState(false);
 
   useEffect(() => {
     fetchDeletedMails();
@@ -48,15 +39,8 @@ function Trash() {
 
   const fetchDeletedMails = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.get(
-        "https://localhost/mails/deleted-mails",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+     
+     const response= await axiosInstance.get('/mails/deleted-mails')
 
       setDeletedMails(response.data.data.reverse());
       setLoading(false);
@@ -71,13 +55,8 @@ function Trash() {
 
   const handleViewMail = async (id) => {
     try {
-      console.log(id);
-      const token = localStorage.getItem("token");
-      const response = await axios.get(`https://localhost/mails/view/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      
+      const response=await axiosInstance.get(`/mails/view/${id}`)
 
       setSelectedMail(response.data);
       setSelectedMailId(id);
@@ -92,15 +71,8 @@ function Trash() {
 
   const handleClearTrash = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.delete(
-        "https://localhost/mails/clear-Trash",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+     
+      const response=await axiosInstance.delete('/mails/clear-trash')
 
       if (response.status === 200) {
         setDeletedMails([]);
@@ -129,20 +101,15 @@ function Trash() {
 
   const handledelete = async (id) => {
     try {
-      console.log(id);
-      const token = localStorage.getItem("token");
-      await axios.delete(`https://localhost/mails/Trash/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      
+      await axiosInstance.delete(`/mails/trash/${id}`)
       setDeletedMails(deletedMails.filter((mail) => mail.id !== id));
       if (selectedMailId === id) {
         setSelectedMail(null);
         setSelectedMailId(null);
       }
     } catch (error) {
-      setError("Error deleting mail.");
+      setError("Error deleting mail."+error);
     }
   };
   const handledeleteconfirm = (id) => {

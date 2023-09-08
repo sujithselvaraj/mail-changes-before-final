@@ -13,8 +13,6 @@ function GenerateAvatar(sender) {
       userBackgroundColor = getRandomColor();
       localStorage.setItem(`userBackgroundColor_${sender}`, userBackgroundColor);
     }
-  
-
     const textColor = getTextColor(userBackgroundColor);
   
     const avatarStyle = {

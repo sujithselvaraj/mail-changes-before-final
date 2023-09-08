@@ -9,34 +9,27 @@ import Trash from '../../../Assests/Bin.svg';
 import forward from '../../../Assests/Forward.svg';
 import reply from '../../../Assests/Reply.svg';
 import ConfirmationDialog from '../../Reducers/ConfirmationDialog';
+import { UseCommonState } from '../../Reducers/UseCommonState';
+import axiosInstance from '../../Reducers/AxiosConfig';
+
+
 
 function Inbox() {
-  const [showAllRecipients, setShowAllRecipients] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false); 
-  const [confirmationMessage, setConfirmationMessage] = useState('');
-  const [confirmedAction, setConfirmedAction] = useState(null);
+
+  const{showAllRecipients,setShowAllRecipients,showConfirmation,setShowConfirmation,confirmationMessage,setConfirmationMessage,confirmedAction,setConfirmedAction,
+    receivedMails,setReceivedMails,composingEmail,setComposingEmail,selectedMail,setSelectedMail,loading,setLoading,error,setError,
+    selectedMailId,setSelectedMailId,currentPage,setCurrentPage}=UseCommonState();
 
   const [composeData, setComposeData] = useState({
     subject: '',
     recipients: '',
     content: '',
   });
-  const [receivedMails, setReceivedMails] = useState([]);
-  const [composingEmail, setComposingEmail] = useState(false);
-
-  const [selectedMail, setSelectedMail] = useState(null);
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedMailId, setSelectedMailId] = useState(null);
-
-  const [currentPage, setCurrentPage] = useState(1);
+  
   const sentMailsPerPage = 10; 
   const indexOfLastInboxMail = currentPage * sentMailsPerPage;
   const indexOfFirstInboxMail = indexOfLastInboxMail - sentMailsPerPage;
   const currentInboxMails = receivedMails.slice(indexOfFirstInboxMail, indexOfLastInboxMail);
-    
-
   
 useEffect(() => {
   fetchReceivedMails();
@@ -49,20 +42,14 @@ useEffect(() => {
   }
 }, [receivedMails]);
 
-
   const fetchReceivedMails = async () => {
     try {
-      const token = localStorage.getItem('token'); 
-      const response = await axios.get('https://localhost/mails/received-mails', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-
+      const response = await axiosInstance.get('/mails/received-mails');
+      if(response.status==200){
       setReceivedMails(response.data.data.reverse());
-      setLoading(false);
+      setLoading(false);}
     } catch (error) {
-      setError('Error fetching received mails.');
+      setError('Error fetching received mails.'+error.message);
       setTimeout(() => {
         setError('');
       }, 3000);
@@ -70,16 +57,9 @@ useEffect(() => {
     }
   };
 
-  const handleViewMail = async (id) => {
+ const handleViewMail = async (id) => {
     try {
-      const token = localStorage.getItem('token');
-      console.log(id);
-      const response = await axios.get(`https://localhost/mails/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-
+      const response=await axiosInstance.get(`/mails/${id}`);
       setSelectedMail(response.data);
       setSelectedMailId(id); 
       handleCancelCompose();
@@ -93,13 +73,7 @@ useEffect(() => {
 
   const handleDeleteMail = async (id) => {
     try {
-      console.log(id);
-      const token = localStorage.getItem('token');
-      await axios.delete(`https://localhost/mails/delete/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      await axiosInstance.delete(`/mails/delete/${id}`);
       setReceivedMails(receivedMails.filter(mail => mail.id !== id));
   if (selectedMailId === id) {
     setSelectedMail(null);
@@ -183,8 +157,7 @@ useEffect(() => {
 
       const { recipients, subject, content } = composeData;
 
-      await axios.post(
-        'https://localhost/mails',
+      await axiosInstance.post('/mails',
         {
           recipients: recipients.split(','),
           subject,
@@ -202,7 +175,7 @@ useEffect(() => {
         subject: '',
         content: '',
       });
-    
+      handleCancelCompose();
     } catch (error) {
       console.error('Error sending email:', error);
     }
@@ -295,8 +268,11 @@ useEffect(() => {
           <button onClick={handleSend} className='compose-button send-button'>Send</button>
         </div>
      </div>
+
+
 )}
     </div>
+
   ):selectedMail ? (
         <div className='Mail-Content'>
           <h2>{selectedMail.subject}</h2>
@@ -304,7 +280,6 @@ useEffect(() => {
           {GenerateAvatar(selectedMail.sender)} 
           <div className="in">
 {selectedMail && <p className="view">From : {selectedMail.sender}</p>}       
-   {/* <p className="view">To : {selectedMail.recipients.join(', ')}</p> */}
           {selectedMail.recipients.length > 1 ? (
     <>
       <p className='view'>

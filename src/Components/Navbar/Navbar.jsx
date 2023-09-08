@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import ConfirmationDialog from "../Reducers/ConfirmationDialog";
+import { UseCommonState } from "../Reducers/UseCommonState";
+import axiosInstance from "../Reducers/AxiosConfig";
 
 function Navbar({ children }) {
   const navigate = useNavigate();
-  const [showConfirmation, setShowConfirmation] = useState(false); // Manage confirmation dialog visibility
-  const [confirmationMessage, setConfirmationMessage] = useState("");
-  const [confirmedAction, setConfirmedAction] = useState(null);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
+  const{showConfirmation,setShowConfirmation,confirmationMessage,setConfirmationMessage,confirmedAction,setConfirmedAction}=UseCommonState();
+  const handleLogout = async() => {
+
+      await axiosInstance.post('/mails/logout');
+    
     navigate("/");
+  
   };
 
   function handleClick() {

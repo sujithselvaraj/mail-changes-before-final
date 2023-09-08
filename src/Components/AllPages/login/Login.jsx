@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import "./Login.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import { UseCommonState } from "../../Reducers/UseCommonState";
+import axiosInstance from "../../Reducers/AxiosConfig";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
+  const{username,setUsername,password,setPassword,errorMessage,setErrorMessage}=UseCommonState();
+  
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -21,17 +23,29 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://localhost/mails/authenticate",
+
+console.log(username);
+console.log(password);
+
+       await axiosInstance.post(
+        "/mails/authenticate",
         {
           username,
-          password,
+          password
         }
-      );
+      ).then((res)=>console.log(res))
+      
+      
+//       const token = response.data.jwtToken;
+//         console.log(token)
 
-      const token = response.data.jwtToken;
-      localStorage.setItem("token", token);
 
+//         Cookies.set("token",token);
+
+// console.log(Cookies.get('token'))
+
+      // localStorage.setItem("token", token);
+        // console.log(response);
       navigate("/Inbox");
     } catch (error) {
       setErrorMessage("Invalid username or password Check it!");

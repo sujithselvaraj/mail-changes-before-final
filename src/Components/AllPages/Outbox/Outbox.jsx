@@ -5,16 +5,20 @@ import "./Outbox.css";
 import Navbar from "../../Navbar/Navbar";
 import { format } from "date-fns";
 import forward from "../../../Assests/Forward.svg";
+import { UseCommonState } from "../../Reducers/UseCommonState";
+import axiosInstance from "../../Reducers/AxiosConfig";
+
 function Outbox() {
-  const [sentMails, setSentMails] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedMail, setSelectedMail] = useState(null);
-  const [selectedMailId, setSelectedMailId] = useState(null);
+  // const [sentMails, setSentMails] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+  // const [selectedMail, setSelectedMail] = useState(null);
+  // const [selectedMailId, setSelectedMailId] = useState(null);
 
-  const [showAllRecipients, setShowAllRecipients] = useState(false);
-
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [showAllRecipients, setShowAllRecipients] = useState(false);
+  const{sentMails,setSentMails,loading,setLoading,error,setError,selectedMail,setSelectedMail,selectedMailId,setSelectedMailId,showAllRecipients,setShowAllRecipients,
+          currentPage,setCurrentPage,composingEmail,setComposingEmail}=UseCommonState();
+  // const [currentPage, setCurrentPage] = useState(1);
   const sentMailsPerPage = 10;
   const indexOfLastSentMail = currentPage * sentMailsPerPage;
   const indexOfFirstSentMail = indexOfLastSentMail - sentMailsPerPage;
@@ -27,7 +31,7 @@ function Outbox() {
     recipients: "",
     content: "",
   });
-  const [composingEmail, setComposingEmail] = useState(false);
+  // const [composingEmail, setComposingEmail] = useState(false);
 
   const toggleRecipientExpansion = () => {
     setShowAllRecipients(!showAllRecipients);
@@ -45,16 +49,16 @@ function Outbox() {
 
   const fetchSentMails = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.get(
-        "https://localhost/mails/get-send-emails",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
+      // const token = localStorage.getItem("token");
+      // const response = await axios.get(
+      //   "https://localhost/mails/get-send-emails",
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
+      const response=await axiosInstance.get('/mails/get-send-emails')
       setSentMails(response.data.data.reverse());
       setLoading(false);
     } catch (error) {
@@ -68,12 +72,8 @@ function Outbox() {
 
   const handleViewMail = async (id) => {
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.get(`https://localhost/mails/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      
+      const response=await axiosInstance.get(`/mails/${id}`)
 
       setSelectedMail(response.data);
       setSelectedMailId(id);
@@ -105,7 +105,7 @@ function Outbox() {
   };
 
   const handleCancelCompose = () => {
-    // Reset composeData and hide the compose section
+
     setComposeData({
       subject: "",
       recipients: "",
@@ -121,17 +121,12 @@ function Outbox() {
 
       const { recipients, subject, content } = composeData;
 
-      await axios.post(
-        "https://localhost/mails",
+      await axiosInstance.post(
+       "/mails",
         {
           recipients: recipients.split(","),
           subject,
           content,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
         }
       );
 
@@ -140,6 +135,7 @@ function Outbox() {
         subject: "",
         content: "",
       });
+      handleCancelCompose()
     } catch (error) {
       console.error("Error sending email:", error);
     }
@@ -153,7 +149,7 @@ function Outbox() {
       `userBackgroundColor_${recipients}`
     );
 
-    // If no color is set, generate a random color and store it in localStorage
+
     if (!userBackgroundColor) {
       userBackgroundColor = getRandomColor();
       localStorage.setItem(
@@ -162,20 +158,20 @@ function Outbox() {
       );
     }
 
-    // Determine the text color based on background color
+
     const textColor = getTextColor(userBackgroundColor);
 
-    // Define a style for the avatar
+
     const avatarStyle = {
       backgroundColor: userBackgroundColor,
       color: textColor,
       borderRadius: "50%",
-      width: "40px", // Adjust the size as needed
+      width: "40px", 
       height: "40px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      fontSize: "18px", // Adjust the font size as needed
+      fontSize: "18px", 
     };
 
     return <div style={avatarStyle}>{initials}</div>;
