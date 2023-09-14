@@ -12,6 +12,9 @@
     "fs": "^0.0.1-security",
     "https": "^1.0.0",
     "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^3.1.2",
+    "keycloak-js": "^22.0.2",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-cookie": "^6.1.1",
@@ -23,7 +26,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "export HTTPS=true&&SSL_CRT_FILE=./ssl/cert.pem&&SSL_KEY_FILE=./ssl/key.pem react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import jwtDecode from 'jwt-decode';
+
 import LeftSideBar from "../../LeftSideBar/LeftSideBar";
 import "./Outbox.css";
 import Navbar from "../../Navbar/Navbar";
@@ -7,6 +8,7 @@ import { format } from "date-fns";
 import forward from "../../../Assests/Forward.svg";
 import { UseCommonState } from "../../Reducers/UseCommonState";
 import axiosInstance from "../../Reducers/AxiosConfig";
+import { keycloak } from "../../../keycloak";
 
 function Outbox() {
   // const [sentMails, setSentMails] = useState([]);
@@ -14,6 +16,20 @@ function Outbox() {
   // const [error, setError] = useState(null);
   // const [selectedMail, setSelectedMail] = useState(null);
   // const [selectedMailId, setSelectedMailId] = useState(null);
+  // const jwtDecode = require('jwt-decode');
+
+// Your Keycloak token
+const keycloakToken = keycloak.token;
+
+// Decode the token
+const decodedToken = jwtDecode(keycloakToken);
+
+// Access claims, e.g., username
+const username = decodedToken.preferred_username;
+
+console.log('Username:', username);
+
+  console.log(keycloak.token);
 
   // const [showAllRecipients, setShowAllRecipients] = useState(false);
   const{sentMails,setSentMails,loading,setLoading,error,setError,selectedMail,setSelectedMail,selectedMailId,setSelectedMailId,showAllRecipients,setShowAllRecipients,
@@ -49,16 +65,16 @@ function Outbox() {
 
   const fetchSentMails = async () => {
     try {
-      // const token = localStorage.getItem("token");
-      // const response = await axios.get(
-      //   "https://localhost/mails/get-send-emails",
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //     },
-      //   }
-      // );
-      const response=await axiosInstance.get('/mails/get-send-emails')
+      console.log("enter")
+
+      const response=await axiosInstance.get('/mails/get-send-emails',{
+        headers:{
+          Authorization: `Bearer ${keycloak.token}`,
+          sender:username,
+        }
+      })
+      console.log("token"+keycloak.token);
+      console.log(response);
       setSentMails(response.data.data.reverse());
       setLoading(false);
     } catch (error) {

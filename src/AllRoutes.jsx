@@ -1,7 +1,5 @@
 import React from 'react'
 import {Routes ,Route, BrowserRouter} from 'react-router-dom'
-import Login from './Components/AllPages/Login/Login'
-import SignUp from './Components/AllPages/SignUp/SignUp'
 import Inbox from './Components/AllPages/Inbox/Inbox'
 import Outbox from './Components/AllPages/Outbox/Outbox'
 import Trash from './Components/AllPages/Trash/Trash'
@@ -11,8 +9,7 @@ const AllRoutes = () => {
   return (
     <BrowserRouter>
         <Routes>
-          <Route  path='/' element={<Login/>}/>
-          <Route  path='SignUp' element={<SignUp/>}/>
+          <Route  path='/' element={<Inbox/>}/>
           <Route path="Inbox" element={<Inbox />} />
           <Route path="Outbox" element={<Outbox />} />
           <Route path="Trash" element={<Trash />} />

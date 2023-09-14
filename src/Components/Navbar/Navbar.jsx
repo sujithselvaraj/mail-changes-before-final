@@ -4,6 +4,7 @@ import "./Navbar.css";
 import ConfirmationDialog from "../Reducers/ConfirmationDialog";
 import { UseCommonState } from "../Reducers/UseCommonState";
 import axiosInstance from "../Reducers/AxiosConfig";
+import { keycloak } from "../../keycloak";
 
 function Navbar({ children }) {
   const navigate = useNavigate();
@@ -11,9 +12,10 @@ function Navbar({ children }) {
   const{showConfirmation,setShowConfirmation,confirmationMessage,setConfirmationMessage,confirmedAction,setConfirmedAction}=UseCommonState();
   const handleLogout = async() => {
 
-      await axiosInstance.post('/mails/logout');
+    keycloak.logout()
+    //   await axiosInstance.post('/mails/logout');
     
-    navigate("/");
+    // navigate("/");
   
   };
 

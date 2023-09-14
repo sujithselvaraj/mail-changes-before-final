@@ -1,5 +1,4 @@
 import React, { useState, useEffect,useRef } from 'react';
-import axios from 'axios';
 import './Inbox.css';
 import { format } from 'date-fns';
 import { GenerateAvatar } from '../../Reducers/GenerateAvatar';
@@ -11,11 +10,12 @@ import reply from '../../../Assests/Reply.svg';
 import ConfirmationDialog from '../../Reducers/ConfirmationDialog';
 import { UseCommonState } from '../../Reducers/UseCommonState';
 import axiosInstance from '../../Reducers/AxiosConfig';
+import { keycloak } from '../../../keycloak';
 
 
 
 function Inbox() {
-
+    console.log(keycloak.token)
   const{showAllRecipients,setShowAllRecipients,showConfirmation,setShowConfirmation,confirmationMessage,setConfirmationMessage,confirmedAction,setConfirmedAction,
     receivedMails,setReceivedMails,composingEmail,setComposingEmail,selectedMail,setSelectedMail,loading,setLoading,error,setError,
     selectedMailId,setSelectedMailId,currentPage,setCurrentPage}=UseCommonState();
@@ -42,7 +42,10 @@ useEffect(() => {
   }
 }, [receivedMails]);
 
+
+
   const fetchReceivedMails = async () => {
+    console.log(keycloak.token);
     try {
       const response = await axiosInstance.get('/mails/received-mails');
       if(response.status==200){
@@ -152,8 +155,8 @@ useEffect(() => {
   
   const handleSend = async () => {
     try {
-      const token = localStorage.getItem('token');
-      console.log(token);
+      // const token = localStorage.getItem('token');
+      // console.log(token);
 
       const { recipients, subject, content } = composeData;
 
@@ -163,11 +166,7 @@ useEffect(() => {
           subject,
           content,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+    
       );
   
       setComposeData({
